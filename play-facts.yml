@@ -1,0 +1,10 @@
+---
+- hosts:
+    node1
+  tasks:
+  - name: add hostname to a file
+    lineinfile:
+      path: /home/ansible/facts.txt
+      line: "{{ ansible_architecture }}"
+      create: yes
+...

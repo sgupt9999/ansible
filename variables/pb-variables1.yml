@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  tasks:
+  - name: testing different kinds of variables
+    debug:
+      msg: "{{ groups['webserver']|join(' ') }}"
+  - name: testing variables defined in a file
+    debug:
+      msg: "These are the users {{ staff }}"
+...

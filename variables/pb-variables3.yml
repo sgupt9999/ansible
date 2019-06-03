@@ -1,0 +1,16 @@
+---
+- hosts:
+    node1
+  become: yes
+  serial:
+  - 1
+  tasks:
+  - name: install elinks
+    yum:
+      name: elinks
+      state: latest
+    register: v2
+  - name: testing different kinds of variables
+    debug:
+      msg: " This is the output of the yum command {{ v2 }}"
+...

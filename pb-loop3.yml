@@ -1,0 +1,14 @@
+---
+- hosts:
+    localhost
+  become: yes
+  vars:
+    v1: ['httpd','mod_ssl']
+  tasks:
+  - name: Testing how loop works
+    yum:
+      name: "{{ item }}"
+      state: absent
+    loop:
+      "{{ v1 }}"
+...

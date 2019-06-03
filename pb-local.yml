@@ -1,0 +1,12 @@
+---
+- hosts:
+    localhost
+  tasks:
+  - name: testing running on local host
+    debug:
+      msg: Job well done
+  - name: installing elinks
+    yum:
+      name: elinks
+      state: latest
+...

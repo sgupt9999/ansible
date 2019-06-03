@@ -1,0 +1,8 @@
+staff:
+- user20
+- user30
+- user40
+group:
+- group20
+- group30
+- group40

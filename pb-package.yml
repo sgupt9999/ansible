@@ -1,0 +1,14 @@
+---
+- hosts:
+    localhost
+  become: yes
+  vars:
+    v1: ['httpd','mod_ssl']
+  tasks:
+  - name: testing the package module
+    package:
+      state: absent
+      name: "{{ item }}"
+    loop:
+      " {{ v1 }}"
+...

@@ -1,0 +1,9 @@
+---
+- hosts:
+    localhost
+  vars_files: ./varf
+  tasks:
+  - name: Testing variable files
+    debug:
+      msg: "This is from the variables file {{ message2 }}"
+...

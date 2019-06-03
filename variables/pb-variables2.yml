@@ -1,0 +1,14 @@
+---
+- hosts:
+    node1
+    node2
+  serial:
+  - 1
+  tasks:
+  - name: testing different kinds of variables
+    debug:
+      msg: "{{ groups['webserver']|join('$$$') }}"
+  - name: testing magic variables
+    debug:
+      msg: "{{ hostvars['node1']['ansible_distribution'] }}"
+...

@@ -1,0 +1,21 @@
+---
+- hosts:
+    127.0.0.1
+  connection:
+    local
+  tasks:
+  - name: get the index file
+    get_url:
+      url: http://{{item}}/index.html
+      dest: /home/ansible/{{item}}
+    with_items:
+    - node1
+    - node2
+    ignore_errors: yes
+  - name: get the index file a second time
+    get_url:
+      url: http://{{item}}/index.html
+      dest: /home/ansible/{{item}}.backup
+    with_items:
+    - node2
+...

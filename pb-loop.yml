@@ -1,0 +1,15 @@
+---
+- hosts:
+    localhost
+  vars:
+    v1: ['sam','linde','linda']
+  tasks:
+  - name: Testing how loop works
+    debug:
+      msg: Hello World {{item.name}} {{item.age}}
+    loop:
+    - name: Jason
+      age: 34
+    - name: Rebecca
+      age: 28
+...

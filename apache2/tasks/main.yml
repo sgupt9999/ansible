@@ -1,0 +1,6 @@
+---
+# tasks file for httpd2
+- name: remove httpd
+  yum:
+    name: httpd
+    state: absent

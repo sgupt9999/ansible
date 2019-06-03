@@ -1,0 +1,14 @@
+---
+- hosts:
+    127.0.0.1
+  connection: local
+  tasks:
+  - name: get the index.html from webserver
+    get_url:
+      url: http://{{item}}/index.html
+      dest: /tmp/{{item}}
+    ignore_errors: no
+    with_items:
+    - node1
+    - node2
+...

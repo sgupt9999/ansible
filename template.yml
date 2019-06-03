@@ -1,0 +1,11 @@
+---
+- hosts:
+    node1
+  vars:
+    list1: ['Hello','World','Here I come']
+  tasks:
+  - name: Testing template module
+    template:
+      src: ./hello_world2.j2
+      dest: /home/ansible/test11
+...

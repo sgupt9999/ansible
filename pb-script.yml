@@ -1,0 +1,11 @@
+---
+- hosts:
+    node1
+  tasks:
+  - name: Testing the script module
+    script: /home/ansible/script2.sh
+    register: output
+  - name: print the output
+    debug:
+      msg: The output is {{output['stdout_lines']}}
+...

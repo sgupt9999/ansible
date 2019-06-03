@@ -1,0 +1,14 @@
+---
+- hosts:
+    127.0.0.1
+  connection:
+    local
+  vars:
+    var1: Hello
+    var2: World
+  tasks:
+  - name: testing how templates work
+    template:
+      src: /home/ansible/t1.j2
+      dest: /tmp
+...

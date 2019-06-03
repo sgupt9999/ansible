@@ -1,0 +1,29 @@
+---
+- hosts:
+    127.0.0.1
+  connection:
+    local
+  tasks:
+  - name: block error testing
+    block:
+    - name: get the index file
+      get_url:
+        url: http://{{item}}/index.html
+        dest: /home/ansible/{{item}}
+      with_items:
+      - node1
+      - node2
+    rescue:
+    - debug:
+        msg: I am the resuce dude 
+    always:
+    - debug:
+        msg: This section is always executed for
+    - name: get the index file again
+      get_url:
+        url: http://{{item}}/index.html
+        dest: /home/ansible/{{item}}.backup
+      with_items:
+      - node1
+      - node2
+...

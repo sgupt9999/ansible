@@ -1,0 +1,15 @@
+---
+- hosts:
+    node1
+  tasks:
+  - name: Checking if user exists, if not create one
+    block:
+    - name: check if the user exists
+      getent:
+        database: passwd
+        key: ansible2
+    rescue:
+    - name: this user doesnt exist. create this user
+      user:
+        name: ansible2
+...

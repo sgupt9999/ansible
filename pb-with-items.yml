@@ -1,0 +1,12 @@
+---
+- hosts:
+    node1
+  tasks:
+  - name: testing with_items
+    debug:
+      msg: "This is item {{item}}"
+    with_items:
+    - sam
+    - Hognny
+    - Rebecca
+...

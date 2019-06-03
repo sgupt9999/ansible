@@ -1,0 +1,7 @@
+all:
+  children:
+    webservers:
+      hosts:
+        node1: 
+          log: /home/ansible
+        node2:

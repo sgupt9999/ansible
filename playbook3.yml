@@ -1,0 +1,36 @@
+---
+- hosts:
+    node1
+    node2
+  tasks:
+    - name: Install httpd server
+      yum:
+        name: httpd
+        state: latest
+    - name: copy the virtual host file
+      copy:
+        src: ./vhost1.conf
+        dest: /etc/httpd/conf.d/
+    - name: make a new directory for the virtual host document root
+      file:
+        path: /test2
+        state: directory
+    - name: copy the virtual host index file
+      copy:
+        src: ./index2.html
+        dest: /test2/index.html
+    - name: create index3.html
+      lineinfile:
+        path: /test2/index3.html
+        line: Hello World. This is index3.html
+        create: yes
+    - name: update the SELinux context of the new directory
+      shell: |
+        semanage fcontext -a -t httpd_sys_content_t "/test2(/.*)?"
+        restorecon -R /test2
+    - name: start and enable
+      systemd:
+        state: restarted
+        name: httpd
+        enabled: yes
+...

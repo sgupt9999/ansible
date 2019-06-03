@@ -1,0 +1,22 @@
+---
+- hosts:
+    node1
+  become: yes
+  tasks:
+  - name: remobe httpd
+    yum:
+      name: httpd
+      state: absent
+  - name: install httpd
+    yum:
+      name: httpd
+      state: latest
+    notify:
+    - "Hello World"
+  handlers:
+  - name: send a message
+    debug:
+      msg: "Hanlder seems to be working"
+    listen:
+      "Hello World"
+...

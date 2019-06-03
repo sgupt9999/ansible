@@ -1,0 +1,12 @@
+---
+- hosts:
+    localhost
+  vars:
+    v1: ['sam','linde','linda']
+  tasks:
+  - name: Testing how loop works
+    debug:
+      msg: Hello World {{ item }}
+    loop:
+      "{{ v1 }}"
+...

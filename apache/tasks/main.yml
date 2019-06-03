@@ -1,0 +1,23 @@
+---
+# tasks file for apache
+- name: debug message
+  debug:
+    msg: "Job well done"
+- name: remove httpd
+  yum:
+    name: httpd
+    state: absent
+- name: install httpd
+  yum:
+    name: httpd
+    state: latest
+- name: enable httpd
+  systemd:
+    name: httpd
+    enabled: yes
+- name: Moving config file
+  template:
+    src: httpd.j2
+    dest: /etc/httpd/conf/httpd.conf
+  notify:
+  - "Restart apache"

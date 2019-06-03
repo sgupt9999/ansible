@@ -1,0 +1,20 @@
+---
+- hosts:
+    node1
+  vars:
+    var10: "This cannoot be happening"
+  tasks:
+  - name: Testing register variable
+    yum:
+      name: httpd
+      state: latest
+    register: var11
+  - name: check if a file exists
+    stat:
+      path: /etc/hosts
+    register: var12
+  - name: output of stat
+    debug:
+      msg: "{{ var12['stat']['exists'] }}"
+    when: var12['stat']['exists'] == true
+...

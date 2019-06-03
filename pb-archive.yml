@@ -1,0 +1,16 @@
+---
+- hosts:
+    127.0.0.1
+  connection:
+    local
+  tasks:
+  - name: archive a directory
+    archive:
+      format: gz
+      path: /home/ansible/data1
+      dest: /home/ansible/1.gz
+  - name: unarchive the directory
+    unarchive:
+      src: /home/ansible/1.gz
+      dest: /home/ansible/2
+...

@@ -1,0 +1,8 @@
+---
+- hosts:
+    node2
+  tasks:
+  - name: get information from ansible_facts
+    debug:
+      msg: "I am printing {{ansible_facts}}"
+...

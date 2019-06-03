@@ -1,0 +1,7 @@
+---
+# handlers file for apache
+- name: restart httpd ig the conf file changed
+  systemd:
+    name: httpd
+    state: restarted
+  listen: "Restart apache"

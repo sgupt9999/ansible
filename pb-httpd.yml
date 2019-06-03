@@ -1,0 +1,35 @@
+---
+- hosts:
+    node1
+    node2
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Remove the old copy of httpd
+    yum:
+      name: httpd
+      state: absent
+  - name: Remove the /etc/httpd completely
+    file:
+      path: /etc/httpd
+      state: absent
+  - name: Remove the old index file
+    file:
+      name: /var/www/html/index.html
+      state: absent
+  - name: Install the latest version of httpd
+    yum:
+      name: httpd
+      state: latest
+  - name: enable the service
+    systemd:
+      name: httpd
+      enabled: yes
+      state: restarted
+  - name: print a debug message
+    debug:
+      msg: "The IP address is {{ ansible_architecture }}"
+  - name: print a debug message
+    debug:
+      msg: "The IP address is {{ ansible_cmdline['LANG'] }}"
+...

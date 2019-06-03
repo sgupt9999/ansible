@@ -1,0 +1,7 @@
+all:
+  children:
+    webserver:
+      hosts:
+       node1:
+       node2:
+       node3:

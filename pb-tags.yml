@@ -1,0 +1,24 @@
+---
+- hosts:
+    node1
+    node2
+  tasks:
+  - name: testing1
+    yum:
+      name: httpd
+      state: absent
+    tags:
+    - tag1
+  - name: testing2
+    yum:
+      name: httpd
+      state: latest
+    tags:
+    - tag2
+  - name: start httpd
+    systemd:
+      name: httpd
+      state: started
+    tags:
+    - tag3
+...

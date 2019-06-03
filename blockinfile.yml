@@ -1,0 +1,17 @@
+---
+- hosts:
+    127.0.0.1
+  connection:
+    local
+  tasks:
+  - name: testing blockinfile module
+    blockinfile:
+      path: /home/ansible/test10
+      create: yes
+      marker: "### {mark} Adding IP address ###"
+      state: absent
+    register: var
+  - name: printing debug information
+    debug:
+      msg: "debug info is {{ var['msg'] }}"
+...
